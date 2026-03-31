@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kids Stories 📚</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --sky: #FFF8F0;
+      --coral: #FF6B6B;
+      --mint: #6BCB77;
+      --blue: #4D96FF;
+      --purple: #C77DFF;
+      --orange: #FF9F1C;
+      --yellow: #FFD93D;
+      --dark: #2D3436;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: var(--sky);
+      min-height: 100vh;
+    }
+
+    /* ── HEADER ── */
+    header {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+      padding: 40px 20px 60px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 20% 50%, rgba(255,255,255,0.04) 0%, transparent 60%),
+                  radial-gradient(circle at 80% 20%, rgba(255,200,50,0.08) 0%, transparent 50%);
+    }
+
+    .star {
+      position: absolute;
+      border-radius: 50%;
+      background: #fff;
+      animation: twinkle 3s ease-in-out infinite;
+    }
+
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.2; transform: scale(1); }
+      50%       { opacity: 1;   transform: scale(1.4); }
+    }
+
+    .header-emoji {
+      font-size: 64px;
+      display: block;
+      margin-bottom: 12px;
+      position: relative;
+      animation: bounce 2s ease-in-out infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(-8px); }
+    }
+
+    header h1 {
+      font-family: 'Fredoka One', cursive;
+      font-size: clamp(2rem, 6vw, 3.5rem);
+      color: var(--yellow);
+      position: relative;
+      text-shadow: 0 4px 20px rgba(0,0,0,0.4);
+      letter-spacing: 1px;
+    }
+
+    header p.tagline {
+      color: rgba(255,255,255,0.75);
+      font-size: 1.1rem;
+      margin-top: 10px;
+      position: relative;
+    }
+
+    /* ── WAVE DIVIDER ── */
+    .wave {
+      display: block;
+      width: 100%;
+      height: 60px;
+      margin-top: -2px;
+    }
+
+    /* ── MAIN CONTENT ── */
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 40px 20px 60px;
+    }
+
+    .section-title {
+      font-family: 'Fredoka One', cursive;
+      font-size: 1.8rem;
+      color: var(--dark);
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    /* ── STORY GRID ── */
+    .story-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 28px;
+    }
+
+    .story-card {
+      background: #fff;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 6px 24px rgba(0,0,0,0.1);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .story-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 14px 36px rgba(0,0,0,0.16);
+    }
+
+    .card-cover {
+      height: 160px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 72px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card-cover .badge {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: rgba(255,255,255,0.9);
+      color: var(--dark);
+      font-size: 0.65rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: 4px 10px;
+      border-radius: 20px;
+    }
+
+    .card-body {
+      padding: 20px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card-number {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #999;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 6px;
+    }
+
+    .card-title {
+      font-family: 'Fredoka One', cursive;
+      font-size: 1.3rem;
+      color: var(--dark);
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
+
+    .card-desc {
+      font-size: 0.9rem;
+      color: #636e72;
+      line-height: 1.5;
+      flex: 1;
+    }
+
+    .card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 14px;
+    }
+
+    .tag {
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .tag-math   { background: #e8f5e9; color: #2e7d32; }
+    .tag-story  { background: #e3f2fd; color: #1565c0; }
+    .tag-age    { background: #fff3e0; color: #e65100; }
+
+    .card-footer {
+      padding: 14px 20px;
+      border-top: 1px solid #f0f0f0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .read-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--blue);
+      color: #fff;
+      font-family: 'Nunito', sans-serif;
+      font-weight: 800;
+      font-size: 0.85rem;
+      padding: 8px 18px;
+      border-radius: 20px;
+      text-decoration: none;
+      transition: background 0.2s ease;
+    }
+
+    .read-btn:hover { background: #2979e8; }
+
+    .pages-info {
+      font-size: 0.8rem;
+      color: #aaa;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 30px 20px;
+      color: #aaa;
+      font-size: 0.85rem;
+    }
+
+    footer span { color: var(--coral); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 500px) {
+      .story-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── HEADER ── -->
+  <header id="header">
+    <span class="header-emoji">📚</span>
+    <h1>Kids Stories</h1>
+    <p class="tagline">Magical adventures that make learning fun! ✨</p>
+  </header>
+
+  <!-- Wave SVG divider -->
+  <svg class="wave" viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60 Z" fill="#FFF8F0"/>
+  </svg>
+
+  <!-- ── MAIN ── -->
+  <main>
+    <h2 class="section-title">📖 Story Collection</h2>
+
+    <div class="story-grid">
+
+      <!-- Story 01: Math Magic Storybook -->
+      <a class="story-card" href="01_math_magic_storybook.html">
+        <div class="card-cover" style="background: linear-gradient(135deg, #1a1a2e 0%, #0f3460 100%);">
+          🌟
+          <span class="badge">Math · Adventure</span>
+        </div>
+        <div class="card-body">
+          <div class="card-number">Story #01</div>
+          <div class="card-title">The Magic Number Forest</div>
+          <div class="card-desc">
+            Join Mia and her owl friend Pip on a magical journey through the Number Forest,
+            where solving math puzzles is the key to saving the day!
+          </div>
+          <div class="card-tags">
+            <span class="tag tag-math">Math</span>
+            <span class="tag tag-story">Story</span>
+            <span class="tag tag-age">Ages 5–9</span>
+          </div>
+        </div>
+        <div class="card-footer">
+          <span class="pages-info">🎒 Interactive storybook</span>
+          <span class="read-btn">Read Now →</span>
+        </div>
+      </a>
+
+    </div>
+  </main>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    Made with <span>♥</span> for curious little minds 🌈
+  </footer>
+
+  <!-- Twinkling stars in header -->
+  <script>
+    (function () {
+      const header = document.getElementById('header');
+      const starData = [
+        { size: 4, top: 15, left: 8,  delay: 0 },
+        { size: 3, top: 25, left: 20, delay: 0.8 },
+        { size: 5, top: 10, left: 35, delay: 1.5 },
+        { size: 3, top: 40, left: 55, delay: 0.4 },
+        { size: 4, top: 18, left: 70, delay: 1.1 },
+        { size: 3, top: 50, left: 82, delay: 0.6 },
+        { size: 5, top: 12, left: 90, delay: 1.8 },
+        { size: 3, top: 60, left: 12, delay: 1.3 },
+        { size: 4, top: 35, left: 45, delay: 0.2 },
+        { size: 3, top: 70, left: 65, delay: 2.0 },
+      ];
+      starData.forEach(function (s) {
+        const el = document.createElement('div');
+        el.className = 'star';
+        el.style.width = s.size + 'px';
+        el.style.height = s.size + 'px';
+        el.style.top = s.top + '%';
+        el.style.left = s.left + '%';
+        el.style.animationDelay = s.delay + 's';
+        header.appendChild(el);
+      });
+    })();
+  </script>
+
+</body>
+</html>
