@@ -22,6 +22,8 @@
 
   /* NAV */
   .nav-bar{display:flex;align-items:center;justify-content:space-between;padding:12px 18px;background:white;border-radius:20px;margin-bottom:10px;border:2px solid #F0E6C8;box-shadow:0 2px 12px rgba(0,0,0,.06);}
+  .home-btn{display:inline-flex;align-items:center;gap:5px;background:var(--mint);color:white;font-family:'Fredoka One',cursive;font-size:15px;padding:8px 18px;border-radius:24px;text-decoration:none;transition:all .2s;}
+  .home-btn:hover{transform:scale(1.05);background:#4db860;}
   .nav-btn{background:var(--coral);color:white;border:none;font-family:'Fredoka One',cursive;font-size:16px;padding:8px 22px;border-radius:24px;cursor:pointer;transition:all .2s;}
   .nav-btn:hover{transform:scale(1.05);background:#ff5252;}
   .nav-btn:disabled{background:#ddd;cursor:not-allowed;transform:none;}
@@ -131,6 +133,9 @@
     <button class="nav-btn" id="prevBtn" onclick="changePage(-1)" disabled>← Back</button>
     <div class="page-dots" id="pageDots"></div>
     <button class="nav-btn" id="nextBtn" onclick="changePage(1)">Next →</button>
+  </div>
+  <div style="text-align:center;margin-bottom:10px;">
+    <a class="home-btn" href="https://dhaneshdlal.github.io/kids">🏠 Back to Home</a>
   </div>
 
   <!-- PAGE 0: COVER -->
