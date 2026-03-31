@@ -874,6 +874,7 @@ for(let i=0;i<=TOTAL;i++){
 
 function goToPage(n){
   if(n<0||n>TOTAL)return;
+  if(n===17&&!quizPassed){alert('You need to pass the quiz with at least 5/6 to get your certificate! 🌟');return;}
   pages[currentPage].classList.remove('active');
   currentPage=n;
   pages[currentPage].classList.add('active');
@@ -964,7 +965,7 @@ const QUESTIONS=[
   {emoji:'🌪️',q:'Which planet is the HOTTEST?',opts:['Mercury — closest to Sun','Mars — it looks hot!','Venus — thick clouds trap heat','Jupiter — it is the biggest'],ans:2},
 ];
 
-let qIdx=0,score=0,answered=false;
+let qIdx=0,score=0,answered=false,quizPassed=false;
 
 function initQuiz(){
   qIdx=0;score=0;answered=false;
@@ -1025,6 +1026,7 @@ function nextQuestion(){
 function showResult(){
   document.getElementById('quizActive').style.display='none';
   if(score>=5){
+    quizPassed=true;
     document.getElementById('quizPass').style.display='block';
     document.getElementById('passScore').textContent=score+' / 6 ⭐';
     const msgs={5:'So close to perfect! You are a brilliant Space Explorer! 🌟',6:'PERFECT SCORE! You are the ultimate Cosmic Champion! The entire Solar System salutes you! 🌌🏆'};
